@@ -23,7 +23,12 @@ function login(req, res, next) {
 
       res
         .status(200)
-        .cookie('apt', token, { maxAge: 86.4e6, secure: true, sameSite: true, httpOnly: true })
+        .cookie('apt', token, {
+          maxAge: 86.4e6,
+          secure: !/^http:\/\/localhost/.test(req.headers.origin),
+          sameSite: true,
+          httpOnly: true
+        })
         .send({ name, email, _id })
     })
     .catch(next)

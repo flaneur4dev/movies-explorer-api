@@ -40,7 +40,7 @@ const movieJoi = {
 
 const movieIdJoi = {
   params: Joi.object().keys({
-    id: Joi.string().required().pattern(/^\w+$/)
+    id: Joi.string().required().hex().length(24)
   })
 };
 
@@ -55,7 +55,7 @@ const errorMessage = {
 
 const origin = {
   'http://localhost:5000': 'http://localhost:5000',
-  'https://media-store.nomoredomains.icu': 'https://media-store.nomoredomains.icu'
+  'https://media-store.nomoredomains.club': 'https://media-store.nomoredomains.club'
 }
 
 module.exports = { registerJoi, loginJoi, userJoi, movieJoi, movieIdJoi, origin, errorMessage }
