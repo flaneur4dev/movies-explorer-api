@@ -1,0 +1,19 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "space-before-function-paren": ["warn", "never"],
+    "linebreak-style": ["warn", "windows"],
+    "arrow-parens": ["warn", "as-needed"],
+    "comma-dangle": ["warn", "never"],
+    "no-shadow": "warn",
+    "max-classes-per-file": "warn",
+    "object-curly-newline": "off",
+    "no-nested-ternary": "off",
+    "no-unused-vars": "off",
+    "prefer-const": "off",
+    "no-console": "off",
+    "eqeqeq": "off",
+    "semi": "off"
+  }
+}
