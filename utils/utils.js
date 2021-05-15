@@ -24,17 +24,18 @@ const userJoi = {
 
 const movieJoi = {
   body: Joi.object().keys({
-    country: Joi.string().required().min(2).max(30),
-    director: Joi.string().required().min(2).max(30),
+    country: Joi.string().required().min(2).max(100),
+    director: Joi.string().required().min(2).max(100),
     duration: Joi.number().required(),
     year: Joi.string().required().min(2).max(4),
-    description: Joi.string().required().min(2).max(100),
+    description: Joi.string().required(),
     image: Joi.string().required().pattern(/^https?:\/\/(www\.)?.+#?$/),
     trailer: Joi.string().required().pattern(/^https?:\/\/(www\.)?.+#?$/),
     thumbnail: Joi.string().required().pattern(/^https?:\/\/(www\.)?.+#?$/),
-    nameRU: Joi.string().required().min(2).max(30),
-    nameEN: Joi.string().required().min(2).max(30),
-    movieId: Joi.string().required()
+    nameRU: Joi.string().required().min(2).max(100),
+    nameEN: Joi.string().required().min(2).max(100),
+    movieId: Joi.number().required(),
+    isSaved: Joi.boolean()
   })
 };
 

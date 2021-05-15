@@ -9,7 +9,21 @@ function createUser(req, res, next) {
 
   bcrypt.hash(password, 10)
     .then(hash => User.create({ name, email, password: hash }))
-    .then(() => res.status(201).send({ message: 'Вы успешно зарегистрировались!' }))
+    // .then(() => res.status(201).send({ message: 'Вы успешно зарегистрировались!' }))
+    .then(user => {
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+      const { name, email, _id } = user;
+
+      res
+        .status(201)
+        .cookie('apt', token, {
+          maxAge: 86.4e6,
+          secure: !/^http:\/\/localhost/.test(req.headers.origin),
+          sameSite: true,
+          httpOnly: true
+        })
+        .send({ name, email, _id })
+    })
     .catch(next)
 }
 
